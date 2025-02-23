@@ -7,28 +7,124 @@ void main() {
 class FirstUI extends StatelessWidget {
   const FirstUI({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        drawer: Drawer(
+          child: Container(
+            color: Colors.black,
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://www.pixel4k.com/wp-content/uploads/2018/10/owl-colorful-art-4k_1540755489.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(Icons.tiktok, color: Colors.white),
+                      FloatingActionButton(
+                        onPressed: () {},
+                        child: Icon(Icons.close),
+                        backgroundColor: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.home, color: Colors.white),
+                  title: Text('Home', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.error, color: Colors.white),
+                  title: Text('Issue', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.merge_type, color: Colors.white),
+                  title: Text('Pull Request',
+                      style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.business_center, color: Colors.white),
+                  title:
+                      Text('Projects', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.chat, color: Colors.white),
+                  title:
+                      Text('Discussion', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.code, color: Colors.white),
+                  title:
+                      Text('Codespaces', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.smart_toy, color: Colors.white),
+                  title: Text('Copilot', style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
-          title: Text("Advanced UI - LAB 06 "),
-          backgroundColor: const Color.fromARGB(255, 95, 2, 2),
+          title: Text("GitHub Landing Page"),
+          backgroundColor: const Color(0xFF24292E),
           centerTitle: true,
         ),
         body: Column(
           children: [
             Image(
               image: NetworkImage(
-                  'https://www.pixel4k.com/wp-content/uploads/2018/10/owl-colorful-art-4k_1540755489.jpg'),
+                  'https://github.githubassets.com/images/modules/site/home-illo-team.svg'),
+            ),
+            Expanded(
+              child: Center(
+                child: Text(
+                  'Welcome to GitHub!',
+                  style: TextStyle(fontSize: 24, color: Colors.black),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('Get Started'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF24292E),
+                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  textStyle: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: const Color(0xFF24292E),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.contact_mail),
+              label: 'Contact',
             ),
           ],
         ),
       ),
     );
-    // ),
-    //);
   }
 }
-
