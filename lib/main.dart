@@ -170,10 +170,39 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home',
-        style: TextStyle(fontSize: 24, color: Colors.black),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Home Page',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Image.network(
+              'https://github.githubassets.com/images/modules/site/home-illo-team.svg',
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to the Home Page!',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Learn More'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 47, 26, 63),
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                textStyle: TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -184,10 +213,38 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Settings',
-        style: TextStyle(fontSize: 24, color: Colors.black),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Settings Page',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Icon(Icons.settings,
+                size: 100, color: const Color.fromARGB(255, 47, 26, 63)),
+            SizedBox(height: 20),
+            Text(
+              'Adjust your preferences here.',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Save Settings'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 47, 26, 63),
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                textStyle: TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -198,10 +255,38 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Contact',
-        style: TextStyle(fontSize: 24, color: Colors.black),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Contact Page',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Icon(Icons.contact_mail,
+                size: 100, color: const Color.fromARGB(255, 47, 26, 63)),
+            SizedBox(height: 20),
+            Text(
+              'Get in touch with us!',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Contact Us'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 47, 26, 63),
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                textStyle: TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
