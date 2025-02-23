@@ -4,8 +4,27 @@ void main() {
   runApp(const FirstUI());
 }
 
-class FirstUI extends StatelessWidget {
+class FirstUI extends StatefulWidget {
   const FirstUI({super.key});
+
+  @override
+  _FirstUIState createState() => _FirstUIState();
+}
+
+class _FirstUIState extends State<FirstUI> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _pages = <Widget>[
+    HomePage(),
+    SettingsPage(),
+    ContactPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +58,7 @@ class FirstUI extends StatelessWidget {
                 HoverListItem(
                   icon: Icons.home,
                   text: 'Home',
+                  onTap: () => _onItemTapped(0),
                 ),
                 HoverListItem(
                   icon: Icons.error,
@@ -64,6 +84,16 @@ class FirstUI extends StatelessWidget {
                   icon: Icons.smart_toy,
                   text: 'Copilot',
                 ),
+                HoverListItem(
+                  icon: Icons.settings,
+                  text: 'Settings',
+                  onTap: () => _onItemTapped(1),
+                ),
+                HoverListItem(
+                  icon: Icons.contact_mail,
+                  text: 'Contact',
+                  onTap: () => _onItemTapped(2),
+                ),
               ],
             ),
           ),
@@ -73,26 +103,13 @@ class FirstUI extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 47, 26, 63),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Image(
-              image: NetworkImage(
-                  'https://www.pixel4k.com/wp-content/uploads/2018/10/owl-colorful-art-4k_1540755489.jpg'),
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'Welcome to the Advanced UI!',
-                  style: TextStyle(fontSize: 24, color: Colors.black),
-                ),
-              ),
-            ),
-          ],
-        ),
+        body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: const Color.fromARGB(255, 47, 26, 63),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -116,8 +133,10 @@ class FirstUI extends StatelessWidget {
 class HoverListItem extends StatefulWidget {
   final IconData icon;
   final String text;
+  final VoidCallback? onTap;
 
-  const HoverListItem({Key? key, required this.icon, required this.text})
+  const HoverListItem(
+      {Key? key, required this.icon, required this.text, this.onTap})
       : super(key: key);
 
   @override
@@ -132,12 +151,57 @@ class _HoverListItemState extends State<HoverListItem> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: Container(
-        color: _isHovered ? Colors.grey[800] : Colors.black,
-        child: ListTile(
-          leading: Icon(widget.icon, color: Colors.white),
-          title: Text(widget.text, style: TextStyle(color: Colors.white)),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Container(
+          color: _isHovered ? Colors.grey[800] : Colors.black,
+          child: ListTile(
+            leading: Icon(widget.icon, color: Colors.white),
+            title: Text(widget.text, style: TextStyle(color: Colors.white)),
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Home',
+        style: TextStyle(fontSize: 24, color: Colors.black),
+      ),
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Settings',
+        style: TextStyle(fontSize: 24, color: Colors.black),
+      ),
+    );
+  }
+}
+
+class ContactPage extends StatelessWidget {
+  const ContactPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Contact',
+        style: TextStyle(fontSize: 24, color: Colors.black),
       ),
     );
   }
