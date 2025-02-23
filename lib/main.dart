@@ -30,83 +30,67 @@ class FirstUI extends StatelessWidget {
                       Icon(Icons.tiktok, color: Colors.white),
                       FloatingActionButton(
                         onPressed: () {},
-                        backgroundColor: Colors.white,
                         child: Icon(Icons.close),
+                        backgroundColor: Colors.white,
                       ),
                     ],
                   ),
                 ),
-                ListTile(
-                  leading: Icon(Icons.home, color: Colors.white),
-                  title: Text('Home', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.home,
+                  text: 'Home',
                 ),
-                ListTile(
-                  leading: Icon(Icons.error, color: Colors.white),
-                  title: Text('Issue', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.error,
+                  text: 'Issue',
                 ),
-                ListTile(
-                  leading: Icon(Icons.merge_type, color: Colors.white),
-                  title: Text('Pull Request',
-                      style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.merge_type,
+                  text: 'Pull Request',
                 ),
-                ListTile(
-                  leading: Icon(Icons.business_center, color: Colors.white),
-                  title:
-                      Text('Projects', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.business_center,
+                  text: 'Projects',
                 ),
-                ListTile(
-                  leading: Icon(Icons.chat, color: Colors.white),
-                  title:
-                      Text('Discussion', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.chat,
+                  text: 'Discussion',
                 ),
-                ListTile(
-                  leading: Icon(Icons.code, color: Colors.white),
-                  title:
-                      Text('Codespaces', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.code,
+                  text: 'Codespaces',
                 ),
-                ListTile(
-                  leading: Icon(Icons.smart_toy, color: Colors.white),
-                  title: Text('Copilot', style: TextStyle(color: Colors.white)),
+                HoverListItem(
+                  icon: Icons.smart_toy,
+                  text: 'Copilot',
                 ),
               ],
             ),
           ),
         ),
         appBar: AppBar(
-          title: Text("GitHub Landing Page"),
-          backgroundColor: const Color(0xFF24292E),
+          title: Text("Advanced UI - LAB 06 "),
+          backgroundColor: const Color.fromARGB(255, 47, 26, 63),
           centerTitle: true,
         ),
         body: Column(
           children: [
             Image(
               image: NetworkImage(
-                  'https://github.githubassets.com/images/modules/site/home-illo-team.svg'),
+                  'https://www.pixel4k.com/wp-content/uploads/2018/10/owl-colorful-art-4k_1540755489.jpg'),
             ),
             Expanded(
               child: Center(
                 child: Text(
-                  'Welcome to GitHub!',
+                  'Welcome to the Advanced UI!',
                   style: TextStyle(fontSize: 24, color: Colors.black),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF24292E),
-                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  textStyle: TextStyle(fontSize: 18),
-                ),
-                child: Text('Get Started'),
               ),
             ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color(0xFF24292E),
+          backgroundColor: const Color.fromARGB(255, 47, 26, 63),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           items: const [
@@ -123,6 +107,36 @@ class FirstUI extends StatelessWidget {
               label: 'Contact',
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class HoverListItem extends StatefulWidget {
+  final IconData icon;
+  final String text;
+
+  const HoverListItem({Key? key, required this.icon, required this.text})
+      : super(key: key);
+
+  @override
+  _HoverListItemState createState() => _HoverListItemState();
+}
+
+class _HoverListItemState extends State<HoverListItem> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: Container(
+        color: _isHovered ? Colors.grey[800] : Colors.black,
+        child: ListTile(
+          leading: Icon(widget.icon, color: Colors.white),
+          title: Text(widget.text, style: TextStyle(color: Colors.white)),
         ),
       ),
     );
