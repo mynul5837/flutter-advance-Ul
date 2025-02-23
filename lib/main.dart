@@ -30,8 +30,8 @@ class FirstUI extends StatelessWidget {
                       Icon(Icons.tiktok, color: Colors.white),
                       FloatingActionButton(
                         onPressed: () {},
-                        child: Icon(Icons.close),
                         backgroundColor: Colors.white,
+                        child: Icon(Icons.close),
                       ),
                     ],
                   ),
@@ -95,12 +95,12 @@ class FirstUI extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text('Get Started'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF24292E),
                   padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                   textStyle: TextStyle(fontSize: 18),
                 ),
+                child: Text('Get Started'),
               ),
             ),
           ],
